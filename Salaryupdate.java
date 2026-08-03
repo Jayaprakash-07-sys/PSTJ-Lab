@@ -1,0 +1,22 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Salaryupdate {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        List<Integer> salaries = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            salaries.add(sc.nextInt());
+        }
+
+        List<Integer> updated = salaries.stream()
+                .map(s -> s + (s * 10 / 100))
+                .collect(Collectors.toList());
+
+        updated.forEach(s -> System.out.print(s + " "));
+    }
+}
