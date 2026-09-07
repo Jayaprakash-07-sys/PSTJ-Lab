@@ -1,0 +1,49 @@
+import java.util.*;
+
+class Ride {
+    void book() {
+        System.out.println("Ride booked");
+    }
+}
+
+class BikeRide extends Ride {
+    void book() {
+        System.out.println("Bike ride booked");
+    }
+}
+
+class CarRide extends Ride {
+    void book() {
+        System.out.println("Car ride booked");
+    }
+}
+
+class AutoRide extends Ride {
+    void book() {
+        System.out.println("Auto ride booked");
+    }
+}
+
+public class RideSharingPlatform {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("1. Bike");
+        System.out.println("2. Car");
+        System.out.println("3. Auto");
+        System.out.print("Choose ride: ");
+
+        int choice = sc.nextInt();
+
+        Ride ride;
+
+        if (choice == 1)
+            ride = new BikeRide();
+        else if (choice == 2)
+            ride = new CarRide();
+        else
+            ride = new AutoRide();
+
+        ride.book();
+    }
+}

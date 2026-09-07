@@ -1,0 +1,16 @@
+import java.util.*;
+
+class HastagFrequency {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] a = sc.nextLine().split(" ");
+
+        Map<String, Integer> m = new HashMap<>();
+
+        for (String s : a)
+            m.put(s, m.getOrDefault(s, 0) + 1);
+
+        for (String s : m.keySet())
+            System.out.println(s + " : " + m.get(s));
+    }
+}
