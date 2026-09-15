@@ -1,0 +1,53 @@
+import java.util.*;
+
+class TrafficSignalNavigation {
+    static Map<String, List<String>> graph = new HashMap<>();
+
+    static void add(String a, String b) {
+        graph.computeIfAbsent(a, k -> new ArrayList<>()).add(b);
+        graph.computeIfAbsent(b, k -> new ArrayList<>()).add(a);
+    }
+
+    static void route(String start, String end) {
+        Queue<String> q = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+
+        q.add(start);
+        visited.add(start);
+
+        while (!q.isEmpty()) {
+            String x = q.poll();
+
+            System.out.print(x + " ");
+
+            if (x.equals(end))
+                return;
+
+            for (String y : graph.get(x)) {
+                if (visited.add(y))
+                    q.add(y);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        add("A", "B");
+        add("A", "C");
+        add("B", "D");
+        add("C", "D");
+        add("D", "E");
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Start: ");
+        String start = sc.next();
+
+        System.out.print("Destination: ");
+        String end = sc.next();
+
+        System.out.print("Route: ");
+        route(start, end);
+
+        sc.close();
+    }
+}
